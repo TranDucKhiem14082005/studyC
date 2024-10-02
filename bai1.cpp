@@ -41,10 +41,32 @@ int s5(int n) {
 	else return 1 + s5(n/10);
 }
 
+//bai 6
+
+int s6(int a, int b) {
+	if(a>b) {
+		return s6(b,a-b);
+	}else if(a<b){
+		return s6(a,b-a);
+	}else
+		return a;
+}
+
+//Cau 7
+double s7(double n) {
+	if(n == 0){
+		return 0;	
+	}
+	else if(n<10) {
+		return s7(n-1)*(1)
+	}
+	
+}
 
 
 int main() {
 	int n;
+	printf("Nhap n: ");
 	scanf("%d",&n);
 	//cau 1
 	printf("S1 = %.2f\n",S1(n));
@@ -62,6 +84,15 @@ int main() {
 	
 	//cau 5
 	printf("S5 = %d\n",s5(n));
+	
+	//cau 6
+	int a,b;
+	printf("Nhap a: ");
+	scanf("%d",&a);
+	printf("Nhap b: ");	
+	scanf("%d",&b);
+	int result6 = s6(a,b);
+	printf("S6 = %d\n",result6);
 	return 0;
 }
 
