@@ -14,12 +14,13 @@ void nhap(int a[],int n) {
 int demSL(int a[],int n, int x) {
 	int dem = 0;
 	for(int i = 0; i < n; i++) {
-		if(a[i] == x) {
-			dem++;
-		}
 		if(a[i] == -1) {
 			break;
 		}
+		if(a[i] == x) {
+			dem++;
+		}
+
 	}
 	return dem;
 }
@@ -30,6 +31,6 @@ int main() {
 	printf("Nhap gia tri x: ");
 	scanf("%d",&x);
 	int result = demSL(a,n,x);
-	printf("so lan xuat hien pt %d trong day so la: %d",x,result);
+	printf("so lan xuat hien pt %d trong day so la: %d",x,demSL(a,n,x));
 	return 0;
 }
