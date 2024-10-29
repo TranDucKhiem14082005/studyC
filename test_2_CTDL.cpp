@@ -71,11 +71,11 @@ void insert(node **head, int k, int x) {
 
 int main() {
 	node *head = NULL;
-//	for(int i = 1; i<=5; i++){
-//		pushFront(&head,i);
-//	}
-//	duyet(head);
-//	printf("\n%d",count(head));
+	for(int i = 1; i<=5; i++){
+		pushFront(&head,i);
+	}
+	duyet(head);
+	printf("\n%d",count(head));
 //	printf("\n");
 //	for(int i = 1; i<=5; i++){
 //		pushBack(&head,i);
