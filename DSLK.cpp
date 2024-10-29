@@ -62,8 +62,9 @@ void pushBack(node **head,int x) {
 	temp->next = newNode;
 }
 
+//Chen 1 node vao giua dslk
 void insert(node **head,int k, int x) {
-	int n = size(*head);
+	int n = count(*head);
 	if(k<1 || k > n+1) return;
 	if(k == 1) {
 		pushFront(head,x);
@@ -79,6 +80,33 @@ void insert(node **head,int k, int x) {
 	temp->next = newNode;
 }
 
+//Xoa 1 node o dau danh sach lien ket
+
+void popFront(node **head){
+	if(*head == NULL) return;
+	node *temp = *head; //temp la node dau tiem => giai phong
+	*head = (*head)->next;
+	//free(temp)
+	free(temp);
+}
+
+//Xoa 1 node o cuoi danh sach lien ket
+
+void popBack(node **head) {
+	if(*head == NULL) return;
+	node *temp = *head;
+	if(temp->next == NULL) {
+		*head == NULL;
+		free(temp);
+		return;
+	}
+	while(temp->next->next != NULL) {
+		temp = temp->next;
+	}
+	node *last = temp->next;
+	temp->next = NULL; 
+	free(last);
+}
 
 int main() {
 	node *head = NULL;
