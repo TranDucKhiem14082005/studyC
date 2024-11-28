@@ -79,8 +79,8 @@ int main() {
 	for(int i = 1; i <= n; i++){
 		visited[i] = 0;
 	}
-	visited[0] = 1;
-	path[0] = 1;
+	visited[1] = 1;
+	path[1] = 1;
 	theBest(0,1,0);
 	if(min_cost == 10000){
 		return 0;
