@@ -36,29 +36,7 @@ void selection(int a[], int n) {
 	}
 }
 
-void insertSort(int a[], int n) {
-	for(int i = 1; i < n; i++) {
-		int key = a[i];
-		int j = i - 1;
-		while(j >= 0 && a[j] > key) {
-			a[j+1] = a[j];
-			j--;
-		}
-		a[j+1] = key;
-	}
-}
 
-void bubble(int a[], int n) {
-	for(int i = n - 1; i >= 1; i--) {
-		for(int j = 0; j <= i-1; j++){
-			if(a[j] > a[j+1]){
-				int temp = a[j];
-				a[j] = a[j+1];
-				a[j+1] = temp;
-			}
-		}
-	}
-}
 
 int main() {
 	int a[100];
