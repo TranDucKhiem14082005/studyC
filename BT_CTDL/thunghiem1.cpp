@@ -42,6 +42,13 @@ int demSoNut(node* root) {
 	return 1 + demSoNut(root->left) + demSoNut(root->right);
 }
 
+int chieuCaoCuaCay(node* root) {
+	if(root == NULL) return -1;
+	int leftHeight = chieuCaoCuaCay(root->left);
+	int rightHeight = chieuCaoCuaCay(root->right);
+	return (leftHeight > rightHeight ? leftHeight : rightHeight) + 1;
+}
+
 int main() {
 	node* root = NULL;
 	int n,value;
@@ -55,5 +62,9 @@ int main() {
 	duyetCay(root);
 	int result = demSoNut(root);
 	printf("\n%d ", result);
+	
+	int heightTree = chieuCaoCuaCay(root);
+	printf("\nChieu cao cua cay la: %d",heightTree);
+	
 	return 0;
 }
