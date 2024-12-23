@@ -21,11 +21,11 @@ void inMang(int a[], int n) {
 	printf("\n");
 }
 
-void selectionSort(int a[], int n) {
-	for(int i = 0; i < n - 1; i++){
+void selectionSort(int a[],int n){
+	for(int i = 0 ; i < n-1; i++) {
 		int min = i;
-		for(int j = i + 1; j < n; j++){
-			if(a[j] < a[min]){
+		for(int j = i + 1; j < n; j++) {
+			if(a[j] < a[min]) {
 				min = j;
 			}
 		}
@@ -35,11 +35,37 @@ void selectionSort(int a[], int n) {
 	}
 }
 
+void selectionSort2(int a[], int n) {
+	for(int i = 0; i < n - 1; i++){
+		int max = i;
+		for(int j = i + 1; j < n; j++){
+			if(a[j] > a[max]){
+				max = j;
+			}
+		}
+		int temp = a[i];
+		a[i] = a[max];
+		a[max] = temp;
+	}
+}
+
 void insertSort(int a[], int n) {
 	for(int i = 1; i < n; i++) {
 		int key = a[i];
 		int j = i - 1;
 		while( j >= 0 && a[j] > key){
+			a[j+1] = a[j];
+			j--;
+		}
+		a[j+1] = key;
+	}
+}
+
+void insertSort2(int a[], int n) {
+	for(int i =1; i<n;i++) {
+		int key = a[i];
+		int j = i - 1;
+		while(j >= 0 && a[j] < key){
 			a[j+1] = a[j];
 			j--;
 		}
@@ -73,6 +99,12 @@ int main() {
 	inMang(a, n);
 	bubbleSort(a,n);
 	printf("Mang su dung bubbleSort: ");
+	inMang(a, n);
+	selectionSort2(a,n);
+	printf("Mang su dung selectionSort2: ");
+	inMang(a, n);
+	insertSort2(a,n);
+	printf("Mang su dung insertSort2: ");
 	inMang(a, n);
 	return 0;
 }

@@ -1,6 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void readFile(const char *s, int a[], int *n) {
+	FILE* f=fopen(s,"r");
+	if(f == NULL) {
+		printf("Khong the mo file!");
+		return;
+	}
+	int i = 0;
+	while(fscanf(f,"%d",&a[i]) != EOF) {
+		i++;
+	}
+	*n = i;
+	fclose(f);
+}
+
+void inMang(int a[], int n) {
+	for(int i = 0; i < n; i++) {
+		printf("%d ",a[i]);
+	}
+	printf("\n");
+}
+
 void merge(int a[], int left, int mid, int right) {
     int n1 = mid - left + 1;
     int n2 = right - mid;
@@ -57,16 +78,16 @@ void printArray(int a[], int n) {
 }
 
 int main() {
-    int a[] = {12, 11, 13, 5, 6, 7};
-    int n = sizeof(a) / sizeof(a[0]);
-
-    printf("M?ng ban d?u: ");
-    printArray(a, n);
+   	int a[100];
+	int n;
+	readFile("input.txt",a,&n);
+	printf("Mang ban dau la: ");
+	inMang(a,n);
 
     mergesort(a, 0, n - 1);
 
-    printf("M?ng sau khi s?p x?p: ");
-    printArray(a, n);
+    printf("Mang sau khi sap xep: ");
+    inMang(a, n);
 
     return 0;
 }

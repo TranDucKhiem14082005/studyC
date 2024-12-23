@@ -1,9 +1,34 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+void readFile(const char *s, int a[], int *n) {
+	FILE* f=fopen(s,"r");
+	if(f == NULL) {
+		printf("khong the mo file");
+		return;
+	}
+	int i =0;
+	while(fscanf(f,"%d",&a[i]) != EOF){
+		i++;
+	}
+	*n = i;
+//	for(int i = 0 ; i < *n; i++){
+//		fscanf(f,"%d",&a[i]);
+//	}
+	fclose(f);
+}
+
+void inMang(int a[], int n) {
+	for(int i =0;i<n;i++){
+		printf("%d ",a[i]);
+	}
+	printf("\n");
+}
 
 void heapify(int a[], int n, int i) {
-    int largest = i; // Gi? s? g?c là l?n nh?t
-    int left = 2 * i + 1; // Con trái
-    int right = 2 * i + 2; // Con ph?i
+    int largest = i; 
+    int left = 2 * i + 1; 
+    int right = 2 * i + 2; 
 
     if (left < n && a[left] > a[largest])
         largest = left;
@@ -21,39 +46,34 @@ void heapify(int a[], int n, int i) {
 }
 
 void heapsort(int a[], int n) {
-    // Xây d?ng Max-Heap
-    for (int i = n / 2 - 1; i >= 0; i--) {
+    
+    for (int i = n / 2 - 1; i >= 0; i--) { // n / 2 - 1: la nut cha o cuoi cung
+    //luc nay minh se cho chay tu nut cha cuoi len goc sau do minh sap xep lai cay
         heapify(a, n, i);
     }
 
-    // Trích xu?t t?ng ph?n t? t? heap
+    
     for (int i = n - 1; i > 0; i--) {
         int temp = a[0];
         a[0] = a[i];
         a[i] = temp;
 
-        heapify(a, i, 0); // Tái c?u trúc heap
+        heapify(a, i, 0); //sap xep lai mang giam dan
     }
 }
 
-void printArray(int a[], int n) {
-    for (int i = 0; i < n; i++) {
-        printf("%d ", a[i]);
-    }
-    printf("\n");
-}
 
 int main() {
-    int a[] = {12, 11, 13, 5, 6, 7};
-    int n = sizeof(a) / sizeof(a[0]);
-
-    printf("M?ng ban d?u: ");
-    printArray(a, n);
+    int a[100] ;
+    int n;
+	readFile("input.txt",a,&n);
+    printf("Mang ban dau: ");
+    inMang(a, n);
 
     heapsort(a, n);
 
-    printf("M?ng sau khi s?p x?p: ");
-    printArray(a, n);
+    printf("Mang sau khi sap xep: ");
+    inMang(a, n);
 
     return 0;
 }
