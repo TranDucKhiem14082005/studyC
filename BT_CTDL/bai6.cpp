@@ -1,15 +1,15 @@
 #include <stdio.h>
-int s6(int a, int b) {
+int uscln(int a, int b) {
 	if(a>b) {
-		return s6(b,a-b);
+		return uscln(b,a-b);
 	}else if(a<b){
-		return s6(a,b-a);
+		return uscln(a,b-a);
 	}else
 		return a;
 }
 
-int s7(int n) {
-	
+int bcnn(int a, int b) {
+	return (a*b) / uscln(a,b);
 }
 
 int main() {
@@ -18,8 +18,9 @@ int main() {
 	scanf("%d",&a);
 	printf("Nhap b: ");	
 	scanf("%d",&b);
-	int result6 = s6(a,b);
-	printf("S6 = %d\n",result6);
-	
+	int result = uscln(a,b);
+	printf("uoc so chung lon nhat = %d\n",result);
+	int result2 = bcnn(a,b);
+	printf("bo so chung nho nhat = %d\n",result2);
 	return 0;
 }

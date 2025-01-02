@@ -1,46 +1,71 @@
 #include <stdio.h>
 #include <limits>
+#include <stdlib.h>
 struct Node {
 	float giatri;
 	Node* tiep;
 };
 
-//Tao danh sach lien ket don. tim so am lon nhat trong danh sach lien ket don do
+//Tao danh sach lien ket don. tim so am lon trong danh sach lien ket don do
 
-
-float tongAm(Node*dau){
-	Node*tam;
-	float tong = 0;
-	tam = dau;
-	if(dau == NULL) return tong;
-	while((tam!=NULL && (tam->giatri > 0))) {
-		tam = tam->tiep;
-	}
-	if (tam  == NULL) return tong;
-	tong = tam->giatri;
-	while(tam != NULL) {
-		if(tam->giatri < 0 && tam->giatri > tong) {
-			tong += tam->giatri;
+float am_max(Node *dau){
+	Node *tam;
+	tam=dau;
+	float max=0;
+	while(tam!=NULL){
+		if(tam->giatri<0){
+			max=tam->giatri;
+			break;
 		}
-		tam = tam->tiep;
+		tam=tam->tiep;
 	}
-	return tong;
+	while(tam!=NULL){
+		if(tam->giatri>max && tam->giatri<0){
+			max=tam->giatri;
+		}
+		tam=tam->tiep;
+	}
+	return max;
 }
 
 int main() {
-	Node n1 = {-5.5 , NULL};
-	Node n2 = {2.4, NULL};
-	Node n3 = {1, NULL};
-	Node n4 = {-4.5, NULL};
-	n1.tiep = &n2;
-	n2.tiep = &n3;
-	n3.tiep = &n4;
-	Node* dau = &n1;
+	int n;
+    printf("Nhap so luong phan tu trong danh sach: ");
+    scanf("%d", &n);
+    
+    
+    if (n <= 0) {
+        printf("Danh sach khong hop le.\n");
+        return 0;
+    }
+    
+    Node* dau = NULL;
+    Node* cuoi = NULL;
+    
+    
+    for (int i = 0; i < n; i++) {
+        float gia_tri;
+        printf("Nhap gia tri phan tu %d: ", i + 1);
+        scanf("%f", &gia_tri);
+        
+        Node* moi = (Node*)malloc(sizeof(Node));
+        moi->giatri = gia_tri;
+        moi->tiep = NULL;
+        
+        
+        if (dau == NULL) {
+            dau = moi;
+            cuoi = dau;
+        } else {
+            cuoi->tiep = moi;  
+            cuoi = moi;
+        }
+    }
 	
-	float tong = tongAm(dau);
+	float tong = am_max(dau);
 	
 	if(tong < 0) {
-		printf("Tong cac so am la: %.2f ", tong);
+		printf(" so am lon nhat  la: %.2f ", tong);
 	} 
 	else printf("Khong co so am trong danh sach lien ket!!!");
 	return 0;

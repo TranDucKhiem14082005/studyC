@@ -13,7 +13,7 @@ int main() {
     printf("Mang ban dau: ");
     inMang(a, n);
 
-    // Tìm s? âm d?u tiên
+    
     int indexAm = timSoAmDauTien(a, n);
     if (indexAm != -1) {
         printf("So am dau tien: %d (vi tri %d)\n", a[indexAm], indexAm);
@@ -21,7 +21,7 @@ int main() {
         printf("Khong co so am trong mang.\n");
     }
 
-    // Tìm s? duong d?u tiên
+    
     int indexDuong = timSoDuongDauTien(a, n);
     if (indexDuong != -1) {
         printf("So duong dau tien: %d (vi tri %d)\n", a[indexDuong], indexDuong);
@@ -29,7 +29,7 @@ int main() {
         printf("Khong co so duong trong mang.\n");
     }
 
-    // Hoán d?i ph?n t? nh? nh?t và l?n nh?t
+    
     hoanDoiMinMax(a, n);
     printf("Mang sau khi hoan doi: ");
     inMang(a, n);
@@ -40,20 +40,19 @@ int main() {
 int timSoAmDauTien(int a[], int n) {
     for (int i = 0; i < n; i++) {
         if (a[i] < 0) {
-            return i; // Tr? v? v? trí c?a s? âm d?u tiên
+            return i; 
         }
     }
-    return -1; // Không có s? âm
+    return -1; 
 }
 
 
 int timSoDuongDauTien(int a[], int n) {
     for (int i = 0; i < n; i++) {
         if (a[i] > 0) {
-            return i; // Tr? v? v? trí c?a s? duong d?u tiên
-        }
+            return i; 
     }
-    return -1; // Không có s? duong
+    return -1; 
 }
 
 void hoanDoiMinMax(int a[], int n) {

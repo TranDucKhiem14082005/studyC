@@ -44,12 +44,20 @@ int soNutLa(node* root) {
 
 int main() {
 	node* intTree = NULL;
-	int values[] = {50,30,20,10,60};
-	for(int i = 0; i < 5; i++){
+	int n;
+	printf("Nhap so luong phan tu trong cay: ");
+	scanf("%d",&n);
+	int values[n];
+	for(int i = 0; i < n; i++) {
+		scanf("%d",&values[i]);
+	}
+	for(int i = 0; i < n; i++){
 		intTree = insert(intTree,values[i]);
 	}
 	
-	int target = 30;
+	int target;
+	printf("Nhap so muon tim kiem: ");
+	scanf("%d",&target);
 	int level = findLevel(intTree, target, 1);
 	int result = soNutLa(intTree);
 	printf("Muc cua gia tri %d: %d\n",target,level);

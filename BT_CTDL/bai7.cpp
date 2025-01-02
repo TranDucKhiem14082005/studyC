@@ -4,7 +4,7 @@
 double tinhTien(double X, double a, double b, int N) {
     
     if (N == 0) {
-        return X;x
+        return X;
     }
     
     

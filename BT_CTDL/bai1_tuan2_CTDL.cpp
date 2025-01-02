@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <limits>
+#include <stdlib.h>>
 struct Node {
 	float giatri;
 	Node* tiep;
@@ -30,19 +31,43 @@ float timSD(Node*dau){
 }
 
 int main() {
-	Node n1 = {-5.5 , NULL};
-	Node n2 = {51, NULL};
-	Node n3 = {2, NULL};
-	n1.tiep = &n2;
-	n2.tiep = &n3;
-	Node* dau = &n1;
+	int n;
+    printf("Nhap so luong phan tu trong danh sach: ");
+    scanf("%d", &n);
+    
+    if (n <= 0) {
+        printf("Danh sach khong hop le.\n");
+        return 0;
+    }
+    
+    Node* dau = NULL;
+    Node* cuoi = NULL;
+    
+   
+    for (int i = 0; i < n; i++) {
+        float gia_tri;
+        printf("Nhap gia tri phan tu %d: ", i + 1);
+        scanf("%f", &gia_tri);
+        
+        Node* moi = (Node*)malloc(sizeof(Node));
+        moi->giatri = gia_tri;
+        moi->tiep = NULL;
+        
+        if (dau == NULL) {
+            dau = moi;  
+            cuoi = dau;
+        } else {
+            cuoi->tiep = moi;  
+            cuoi = moi;
+        }
+    }
 	
 	float min = timSD(dau);
 	
 	if(min > 0) {
-		printf("so duong nho nhat la: %f ", min);
+		printf("so duong nho nhat la: %.2f ", min);
 	} 
-	else printf("%f khong phai la so duong nho nhat!!",min);
+	else printf("%.2f khong phai la so duong nho nhat!!",min);
 	return 0;
 }
 

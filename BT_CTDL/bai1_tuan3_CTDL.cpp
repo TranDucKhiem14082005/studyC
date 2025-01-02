@@ -37,10 +37,14 @@ void duyetCay(node *head) {
 
 int main() {
 	node *head = NULL;
-	head = insert(head,50);
-	insert(head,30);
-	insert(head,40);
-	insert(head,60);
+	int n, value;
+	printf("Nhap so luong phan tu cua cay: ");
+    scanf("%d", &n);
+	for (int i = 0; i < n; i++) {
+        printf("Nhap gia tri phan tu thu %d: ", i + 1);
+        scanf("%d", &value);
+        head = insert(head, value);
+    }
 	duyetCay(head);
 	return 0;
 }

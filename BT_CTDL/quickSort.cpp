@@ -28,13 +28,21 @@ void swap(int *a, int *b) {
 }
 
 int partition(int a[], int low, int high) {
-    int pivot = a[high]; // dung de phan chia ra 2 nhanh, mot nhanh nho hon thi ben trai, con nhanh lon hon thi ben phai.
+	int pivot;
+	for(int i = low; i < high; i++) {
+		if(a[i] < 0) {
+			pivot = a[i];
+			break;
+		}
+	}
+     // dung de phan chia ra 2 nhanh, mot nhanh nho hon thi ben trai, con nhanh lon hon thi ben phai.
     int i = low - 1;     
     for (int j = low; j < high; j++) {
         if (a[j] <= pivot) { 
-            i++;
             swap(&a[i], &a[j]);
-        }
+        } else {
+        	i++;
+		}
     }
     swap(&a[i + 1], &a[high]); 
     return i + 1;

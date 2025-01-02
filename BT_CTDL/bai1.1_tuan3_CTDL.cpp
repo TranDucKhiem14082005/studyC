@@ -41,16 +41,15 @@ void inorder(node* root) {
 
 
 int main() {
-    node* root = NULL;
-
-    
-    root = insert(root, 50);
-    root = insert(root, 30);
-    root = insert(root, 70);
-    root = insert(root, 20);
-    root = insert(root, 40);
-    root = insert(root, 60);
-    root = insert(root, 80);
+    node *root = NULL;
+	int n, value;
+	printf("Nhap so luong phan tu cua cay: ");
+    scanf("%d", &n);
+	for (int i = 0; i < n; i++) {
+        printf("Nhap gia tri phan tu thu %d: ", i + 1);
+        scanf("%d", &value);
+        root = insert(root, value);
+    }
 
     
     printf("Duyet cay theo In-order: ");
